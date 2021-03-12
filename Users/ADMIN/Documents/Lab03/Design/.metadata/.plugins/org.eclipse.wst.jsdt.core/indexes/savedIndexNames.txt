@@ -1,2 +1,2 @@
-INDEX VERSION 1.4+C:\Lab03\Design\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2315386619.index
+INDEX VERSION 1.4+C:\Users\ADMIN\Documents\Lab03\Design\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+4153897695.index

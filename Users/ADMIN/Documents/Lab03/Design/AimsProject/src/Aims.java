@@ -10,7 +10,7 @@ public class Aims {
 				"Animation",18.99f);
 		anOrder.addDigitalVideoDisc(dvd1);
 		anOrder.addDigitalVideoDisc(dvd2);
-		anOrder.removeDigitalVideoDisc(dvd2);
+//		anOrder.removeDigitalVideoDisc(dvd2);
 		anOrder.addDigitalVideoDisc(dvd3);
 		System.out.println("The total cost is: ");
 		System.out.println(anOrder.totalCost());
