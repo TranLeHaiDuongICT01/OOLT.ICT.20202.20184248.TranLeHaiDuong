@@ -1,4 +1,3 @@
-
 public class Aims {
 	public static void main(String[] args) {
 		Order anOrder = new Order();
@@ -36,5 +35,6 @@ public class Aims {
 // Total cost
 		System.out.println("The total cost is: "+anOrder.totalCost());
 		System.out.println();
+		anOrder.searchInListOfDisc(" avengers   the  ");
 	}
 }

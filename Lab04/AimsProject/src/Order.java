@@ -7,6 +7,18 @@ public class Order {
 	private MyDate dateOrdered;
 	private DigitalVideoDisc itemsOrdered[]=new DigitalVideoDisc[MAX_NUMER_ORDERED];
 	private int size = 0;
+	public Order(String day,String month,String year) {
+		dateOrdered=new MyDate(day,month,year);
+		if(nbOrders>=MAX_LIMITTED_ORDERS) {
+			System.out.println("The number of orders reaches the limit!");
+			return;
+		}
+		nbOrders++;
+	}
+	public Order(Order list) {
+		this.dateOrdered=list.dateOrdered;
+		this.itemsOrdered=list.itemsOrdered;
+	}
 	public Order(){
 		if(nbOrders>=MAX_LIMITTED_ORDERS) {
 			System.out.println("The number of orders reaches the limit!");
@@ -20,95 +32,107 @@ public class Order {
 		String year = String.valueOf(currentDate.getYear());
 		int currentDay = currentDate.getDayOfMonth();
 		String day="";
-		if(currentDay==30)
-			day="thirdtieth";
-		else {
-			if(currentDay>=10&&currentDay<=20) {
-				switch(currentDay) {
-				case 10:
-					day="tenth";
-					break;
-				case 11:
-					day="elementh";
-					break;
-				case 12:
-					day="twelfth";
-					break;
-				case 13:
-					day="thirdteenth";
-					break;
-				case 14:
-					day="fourteenth";
-					break;
-				case 15:
-					day="fifteenth";
-					break;
-				case 16:
-					day="sixteenth";
-					break;
-				case 17:
-					day="seventeenth";
-					break;
-				case 18:
-					day="eighteenth";
-					break;
-				case 19:
-					day="ninteenth";
-					break;
-				default:
-					day="twentieth";
-					break;
-				}
+			switch(currentDay) {
+			case 10:
+				day="tenth";
+				break;
+			case 11:
+				day="elementh";
+				break;
+			case 12:
+				day="twelfth";
+				break;
+			case 13:
+				day="thirdteenth";
+				break;
+			case 14:
+				day="fourteenth";
+				break;
+			case 15:
+				day="fifteenth";
+				break;
+			case 16:
+				day="sixteenth";
+				break;
+			case 17:
+				day="seventeenth";
+				break;
+			case 18:
+				day="eighteenth";
+				break;
+			case 19:
+				day="ninteenth";
+				break;
+			case 20:
+				day="twentieth";
+				break;
+			case 1:
+				day+="first";
+				break;
+			case 2:
+				day+="second";
+				break;
+			case 3:
+				day+="third";
+				break;
+			case 4:
+				day+="fourth";
+				break;
+			case 5:
+				day+="fifth";
+				break;
+			case 6:
+				day+="sixth";
+				break;
+			case 7:
+				day+="seventh";
+				break;
+			case 8:
+				day+="eighth";
+				break;
+			case 9:
+				day+="ninth";
+				break;
+			case 21:
+				day+="twenty first";
+				break;
+			case 22:
+				day+="twenty second";
+				break;
+			case 23:
+				day+="twenty third";
+				break;
+			case 24:
+				day+="twenty fourth";
+				break;
+			case 25:
+				day+="twenty fifth";
+				break;
+			case 26:
+				day+="twenty sixth";
+				break;
+			case 27:
+				day+="twenty seventh";
+				break;
+			case 28:
+				day+="twenty eighth";
+				break;
+			case 29:
+				day+="twenty ninth";
+				break;
+			case 30: 
+				day="thirdtieth";
+				break;
+			default:
+				break;
 			}
-			else {
-				switch(currentDay/10) {
-				case 2:
-					day+="twenty";
-					break;
-				case 3:
-					day+="thirdty";
-					break;
-				default:
-					break;
-				}
-				currentDay%=10;
-				switch(currentDay) {
-				case 1:
-					day+="first";
-					break;
-				case 2:
-					day+="second";
-					break;
-				case 3:
-					day+="third";
-					break;
-				case 4:
-					day+="fourth";
-					break;
-				case 5:
-					day+="fifth";
-					break;
-				case 6:
-					day+="sixth";
-					break;
-				case 7:
-					day+="seventh";
-					break;
-				case 8:
-					day+="eighth";
-					break;
-				case 9:
-					day+="ninth";
-					break;
-				default:
-					break;
-				}
-			}
-		}
 		dateOrdered=new MyDate(day,month,year);
 	}
 	public int getNbOrders() {
 		return nbOrders;
+	}
+	public MyDate getDate() {
+		return dateOrdered;
 	}
 	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
 		if(size>=MAX_NUMER_ORDERED) {
@@ -188,5 +212,13 @@ public class Order {
 	public int qtyOrdered() {
 		return size;
 	}
+	public void searchInListOfDisc(String title) {
+		for(int i=0;i<size;i++) {
+			if(itemsOrdered[i].search(title)) {
+				System.out.println(" DVD - "+itemsOrdered[i].getTitle()+" - "
+			+itemsOrdered[i].getCategory()+" - "+itemsOrdered[i].getDirector()
+			+" - "+itemsOrdered[i].getLength()+": "+itemsOrdered[i].getCost()+"$");
+			}
+		}
+	}
 }
-

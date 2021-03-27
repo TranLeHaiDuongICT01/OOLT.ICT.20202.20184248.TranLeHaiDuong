@@ -1,4 +1,3 @@
-
 public class DigitalVideoDisc {
 	private String title;
 	private String category;
@@ -45,5 +44,20 @@ public class DigitalVideoDisc {
 	}
 	public float getCost() {
 		return cost;
+	}
+	public boolean search(String title) {
+		String substring="";
+		String s1=this.title.toLowerCase();
+		String s2=title.toLowerCase();
+		for(int i=0;i<s1.length();i++) {
+			if(s1.charAt(i)!=' ') {
+				substring+=s1.charAt(i);
+			}
+			if(substring!="" && (s1.charAt(i)==' ' || i==s1.length()-1)) {
+				if(!s2.contains(substring)) return false;
+				substring="";
+			}
+		}
+		return true;
 	}
 }

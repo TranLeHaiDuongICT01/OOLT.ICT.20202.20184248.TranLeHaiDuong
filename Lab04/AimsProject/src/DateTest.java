@@ -38,5 +38,27 @@ public class DateTest {
 // Total cost
 		System.out.println("The total cost is: "+anOrder.totalCost());
 		System.out.println();
+		
+		Order anOrder2 = new Order("twenty first","January","1980");
+		
+// Adding one element		
+		anOrder2.addDigitalVideoDisc(dvd1);
+		anOrder2.addDigitalVideoDisc(dvd3);
+//		anOrder.printDvdList();
+
+// Adding a list		
+		anOrder2.addDigitalVideoDisc(itemsOrdered);
+//		anOrder.printDvdList();
+
+// Adding two elements		
+		anOrder2.addDigitalVideoDisc(dvd1,dvd2);
+		
+// Print list		
+		anOrder2.printDvdList();
+		
+// Total cost
+		System.out.println("The total cost is: "+anOrder2.totalCost());
+		System.out.println();
+		
 	}
 }
