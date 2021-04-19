@@ -1,0 +1,5 @@
+
+public class Order {
+	public static final int MAX_NUMER_ORDERED =10;
+	private DigitalVideoDisc itemsOrdered[]=new DigitalVideoDisc[MAX_NUMER_ORDERED];
+}
