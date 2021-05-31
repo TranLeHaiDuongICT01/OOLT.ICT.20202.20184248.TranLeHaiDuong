@@ -1,10 +1,12 @@
 package hust.soict.globalict.aims.order;
 
-import java.time.LocalDate;
+import java.time.LocalDate; 
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Random;
 
+import hust.soict.globalict.aims.media.Book;
+import hust.soict.globalict.aims.media.CompactDisc;
 import hust.soict.globalict.aims.media.DigitalVideoDisc;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.utils.MyDate;
@@ -151,7 +153,7 @@ public class Order{
 			return;
 		}
 		for(int i=0;i<size;i++) {
-			if(itemsOrdered.get(i).getTitle()==media.getTitle()) {
+			if(itemsOrdered.get(i).getTitle().equalsIgnoreCase(media.getTitle())) {
 				System.out.println("The disc has been added");
 				return;
 			}
@@ -172,7 +174,7 @@ public class Order{
 		int i=0,check=0;
 		while(i!=n) {
 			for(int j=0;j<size;j++) {
-				if(itemsOrdered.get(j).getTitle().toLowerCase()==mediaList[i].getTitle().toLowerCase()) {
+				if(itemsOrdered.get(j).getTitle().equalsIgnoreCase(mediaList[i].getTitle())  ) {
 					check=j;
 				}
 			}
@@ -193,11 +195,11 @@ public class Order{
 		}
 		int check1=0,check2=0;
 		for(int j=0;j<size;j++) {
-			if(itemsOrdered.get(j).getTitle().toLowerCase()==dvd1.getTitle().toLowerCase()) {
+			if(itemsOrdered.get(j).getTitle().equalsIgnoreCase(dvd1.getTitle())) {
 				System.out.println(itemsOrdered.get(j).getTitle()+" has been added");
 				check1=1;
 			}
-			if(itemsOrdered.get(j).getTitle().toLowerCase()==dvd2.getTitle().toLowerCase()) {
+			if(itemsOrdered.get(j).getTitle().equalsIgnoreCase(dvd2.getTitle())) {
 				System.out.println(itemsOrdered.get(j).getTitle()+" has been added");
 				check2=1;
 			}
@@ -213,8 +215,9 @@ public class Order{
 	}
 	public void removeMedia(Media media) {
 		for(int i=0;i<size;i++) {
-			if(itemsOrdered.get(i).getTitle().toLowerCase()==media.getTitle().toLowerCase()) {
+			if(itemsOrdered.get(i).getTitle().equalsIgnoreCase(media.getTitle())) {
 				itemsOrdered.remove(i);
+				size--;
 				System.out.println("Remove items successfully!");
 				return;
 			}
@@ -238,10 +241,16 @@ public class Order{
 						+itemsOrdered.get(i).getCategory()+" - "+itemsOrdered.get(i).getDirector()
 						+" - "+itemsOrdered.get(i).getLength()+": "+itemsOrdered.get(i).getCost()+"$");
 			}
-			else {
+			else if(itemsOrdered.get(i) instanceof Book) {
 				System.out.println(i+1+". BOOK - "+itemsOrdered.get(i).getTitle()+" - "
 						+itemsOrdered.get(i).getCategory()+" - "
 						+itemsOrdered.get(i).getAuthors()+": "+itemsOrdered.get(i).getCost()+"$");
+			}
+			else if(itemsOrdered.get(i) instanceof CompactDisc) {
+				System.out.println(i+1+". Compact Disc - "+itemsOrdered.get(i).getTitle()+" - "
+								+itemsOrdered.get(i).getCategory()+" - "+itemsOrdered.get(i).getArtist()+" - "
+								+itemsOrdered.get(i).getLength()+": "+itemsOrdered.get(i).getCost()+"$");
+				System.out.println('\t'+"Tracks List: "+itemsOrdered.get(i).getTrackInfo());
 			}
 		}
 	}
